@@ -67,3 +67,26 @@ SELECT ENAME, EMPNO, JOB, SAL FROM EMP;
 
 -- 부서 번호와 부서 이름을 가져온다.
 SELECT DEPTNO, DNAME FROM DEPT;
+
+-- DML 연산자 사용하기
+
+-- 산술 연산자
+-- 각 사원들의 급여액과 급여액에서 
+-- 1000을 더한 값, 200을 뺀 값, 2를 곱한 값,
+-- 2로 나눈 값을 가져온다
+SELECT SAL, SAL + 1000, SAL - 200, SAL * 2, SAL / 2
+FROM EMP;
+
+-- 각 사원의 급여액, 커미션, 급여 + 커미션 액수를 가져온다.
+SELECT SAL, NVL(COMM, 0), SAL + NVL(COMM, 0)
+FROM EMP;
+
+-- concat 연산자
+-- 사원들의 이름과 직무를 다음 양식으로 가져온다.
+-- 000 사원의 담당 직무는 XXX 입니다.
+SELECT ENAME || '사원의 담당 직무는 ' || JOB || '입니다'
+FROM EMP;
+
+-- Distinct
+-- 사원들이 근무하고 있는 근무 부서의 번호를 가져온다.
+SELECT DISTINCT DEPTNO FROM EMP;
