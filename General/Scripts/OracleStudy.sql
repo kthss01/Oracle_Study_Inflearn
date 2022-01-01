@@ -92,3 +92,5 @@ FROM EMP;
 -- Distinct
 -- 사원들이 근무하고 있는 근무 부서의 번호를 가져온다.
 SELECT DISTINCT DEPTNO FROM EMP;
+
+테스트
