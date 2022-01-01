@@ -7,10 +7,10 @@ CREATE TABLE BONUS (
 	COMM NUMBER
 );
 
-COMMENT ON COLUMN BONUS.ENAME IS 'ÀÌ¸§';
-COMMENT ON COLUMN BONUS.JOB IS 'Á÷¹«';
-COMMENT ON COLUMN BONUS.SAL IS '±Þ¿©';
-COMMENT ON COLUMN BONUS.COMM IS 'Ä¿¹Ì¼Ç';
+COMMENT ON COLUMN BONUS.ENAME IS 'ì´ë¦„';
+COMMENT ON COLUMN BONUS.JOB IS 'ì§ë¬´';
+COMMENT ON COLUMN BONUS.SAL IS 'ê¸‰ì—¬';
+COMMENT ON COLUMN BONUS.COMM IS 'ì»¤ë¯¸ì…˜';
 
 CREATE TABLE DEPT (
 	DEPTNO NUMBER,
@@ -18,9 +18,9 @@ CREATE TABLE DEPT (
 	LOC VARCHAR2(13)
 );
 
-COMMENT ON COLUMN DEPT.DEPTNO IS 'ºÎ¼­¹øÈ£';
-COMMENT ON COLUMN DEPT.DNAME IS 'ÀÌ¸§';
-COMMENT ON COLUMN DEPT.LOC IS 'Áö¿ª';
+COMMENT ON COLUMN DEPT.DEPTNO IS 'ë¶€ì„œë²ˆí˜¸';
+COMMENT ON COLUMN DEPT.DNAME IS 'ì´ë¦„';
+COMMENT ON COLUMN DEPT.LOC IS 'ì§€ì—­';
 
 CREATE TABLE EMP (
 	EMPNO NUMBER,
@@ -33,14 +33,14 @@ CREATE TABLE EMP (
 	DEPTNO NUMBER
 );
 
-COMMENT ON COLUMN EMP.EMPNO IS '»ç¿ø¹øÈ£';
-COMMENT ON COLUMN EMP.ENAME IS '»ç¿øÀÌ¸§';
-COMMENT ON COLUMN EMP.JOB IS 'Á÷¹«';
-COMMENT ON COLUMN EMP.MGR IS '»ó°ü »ç¿ø¹øÈ£';
-COMMENT ON COLUMN EMP.HIREDATE IS 'ÀÔ»çÀÏ';
-COMMENT ON COLUMN EMP.SAL IS '±Þ¿©';
-COMMENT ON COLUMN EMP.COMM IS 'Ä¿¹Ì¼Ç';
-COMMENT ON COLUMN EMP.DEPTNO IS '±Ù¹« ºÎ¼­¹øÈ£';
+COMMENT ON COLUMN EMP.EMPNO IS 'ì‚¬ì›ë²ˆí˜¸';
+COMMENT ON COLUMN EMP.ENAME IS 'ì‚¬ì›ì´ë¦„';
+COMMENT ON COLUMN EMP.JOB IS 'ì§ë¬´';
+COMMENT ON COLUMN EMP.MGR IS 'ìƒê´€ ì‚¬ì›ë²ˆí˜¸';
+COMMENT ON COLUMN EMP.HIREDATE IS 'ìž…ì‚¬ì¼';
+COMMENT ON COLUMN EMP.SAL IS 'ê¸‰ì—¬';
+COMMENT ON COLUMN EMP.COMM IS 'ì»¤ë¯¸ì…˜';
+COMMENT ON COLUMN EMP.DEPTNO IS 'ê·¼ë¬´ ë¶€ì„œë²ˆí˜¸';
 
 CREATE TABLE SALGRADE (
 	GRADE NUMBER,
@@ -48,49 +48,47 @@ CREATE TABLE SALGRADE (
 	HISAL NUMBER
 );
 
-COMMENT ON COLUMN SALGRADE.GRADE IS 'µî±Þ';
-COMMENT ON COLUMN SALGRADE.LOSAL IS 'ÃÖÀú ±Þ¿©¾×';
-COMMENT ON COLUMN SALGRADE.HISAL IS 'ÃÖ°í ±Þ¿©¾×';
+COMMENT ON COLUMN SALGRADE.GRADE IS 'ë“±ê¸‰';
+COMMENT ON COLUMN SALGRADE.LOSAL IS 'ìµœì € ê¸‰ì—¬ì•¡';
+COMMENT ON COLUMN SALGRADE.HISAL IS 'ìµœê³  ê¸‰ì—¬ì•¡';
 
 ----------------------------------------------------------
 
 -- DML Select
--- ºÎ¼­ÀÇ ¸ðµç Á¤º¸¸¦ °¡Á®¿Â´Ù 
+-- ë¶€ì„œì˜ ëª¨ë“  ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤ 
 SELECT * FROM DEPT;
 
--- »ç¿øÀÇ ¸ðµç Á¤º¸¸¦ °¡Á®¿Â´Ù
+-- ì‚¬ì›ì˜ ëª¨ë“  ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤
 SELECT * FROM EMP;
 
--- »ç¿øÀÇ ÀÌ¸§°ú »ç¿ø ¹øÈ£¸¦ °¡Á®¿Â´Ù
+-- ì‚¬ì›ì˜ ì´ë¦„ê³¼ ì‚¬ì› ë²ˆí˜¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤
 SELECT ENAME, EMPNO FROM EMP;
 
--- »ç¿øÀÇ ÀÌ¸§°ú »ç¿ø ¹øÈ£, Á÷¹«, ±Þ¿©¸¦ °¡Á®¿Â´Ù
+-- ì‚¬ì›ì˜ ì´ë¦„ê³¼ ì‚¬ì› ë²ˆí˜¸, ì§ë¬´, ê¸‰ì—¬ë¥¼ ê°€ì ¸ì˜¨ë‹¤
 SELECT ENAME, EMPNO, JOB, SAL FROM EMP;
 
--- ºÎ¼­ ¹øÈ£¿Í ºÎ¼­ ÀÌ¸§À» °¡Á®¿Â´Ù.
+-- ë¶€ì„œ ë²ˆí˜¸ì™€ ë¶€ì„œ ì´ë¦„ì„ ê°€ì ¸ì˜¨ë‹¤.
 SELECT DEPTNO, DNAME FROM DEPT;
 
--- DML ¿¬»êÀÚ »ç¿ëÇÏ±â
+-- DML ì—°ì‚°ìž ì‚¬ìš©í•˜ê¸°
 
--- »ê¼ú ¿¬»êÀÚ
--- °¢ »ç¿øµéÀÇ ±Þ¿©¾×°ú ±Þ¿©¾×¿¡¼­ 
--- 1000À» ´õÇÑ °ª, 200À» »« °ª, 2¸¦ °öÇÑ °ª,
--- 2·Î ³ª´« °ªÀ» °¡Á®¿Â´Ù
+-- ì‚°ìˆ  ì—°ì‚°ìž
+-- ê° ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ì•¡ê³¼ ê¸‰ì—¬ì•¡ì—ì„œ 
+-- 1000ì„ ë”í•œ ê°’, 200ì„ ëº€ ê°’, 2ë¥¼ ê³±í•œ ê°’,
+-- 2ë¡œ ë‚˜ëˆˆ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤
 SELECT SAL, SAL + 1000, SAL - 200, SAL * 2, SAL / 2
 FROM EMP;
 
--- °¢ »ç¿øÀÇ ±Þ¿©¾×, Ä¿¹Ì¼Ç, ±Þ¿© + Ä¿¹Ì¼Ç ¾×¼ö¸¦ °¡Á®¿Â´Ù.
+-- ê° ì‚¬ì›ì˜ ê¸‰ì—¬ì•¡, ì»¤ë¯¸ì…˜, ê¸‰ì—¬ + ì»¤ë¯¸ì…˜ ì•¡ìˆ˜ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 SELECT SAL, NVL(COMM, 0), SAL + NVL(COMM, 0)
 FROM EMP;
 
--- concat ¿¬»êÀÚ
--- »ç¿øµéÀÇ ÀÌ¸§°ú Á÷¹«¸¦ ´ÙÀ½ ¾ç½ÄÀ¸·Î °¡Á®¿Â´Ù.
--- 000 »ç¿øÀÇ ´ã´ç Á÷¹«´Â XXX ÀÔ´Ï´Ù.
-SELECT ENAME || '»ç¿øÀÇ ´ã´ç Á÷¹«´Â ' || JOB || 'ÀÔ´Ï´Ù'
+-- concat ì—°ì‚°ìž
+-- ì‚¬ì›ë“¤ì˜ ì´ë¦„ê³¼ ì§ë¬´ë¥¼ ë‹¤ìŒ ì–‘ì‹ìœ¼ë¡œ ê°€ì ¸ì˜¨ë‹¤.
+-- 000 ì‚¬ì›ì˜ ë‹´ë‹¹ ì§ë¬´ëŠ” XXX ìž…ë‹ˆë‹¤.
+SELECT ENAME || 'ì‚¬ì›ì˜ ë‹´ë‹¹ ì§ë¬´ëŠ” ' || JOB || 'ìž…ë‹ˆë‹¤'
 FROM EMP;
 
 -- Distinct
--- »ç¿øµéÀÌ ±Ù¹«ÇÏ°í ÀÖ´Â ±Ù¹« ºÎ¼­ÀÇ ¹øÈ£¸¦ °¡Á®¿Â´Ù.
+-- ì‚¬ì›ë“¤ì´ ê·¼ë¬´í•˜ê³  ìžˆëŠ” ê·¼ë¬´ ë¶€ì„œì˜ ë²ˆí˜¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 SELECT DISTINCT DEPTNO FROM EMP;
-
-Å×½ºÆ®
