@@ -52,6 +52,8 @@ COMMENT ON COLUMN SALGRADE.GRADE IS '등급';
 COMMENT ON COLUMN SALGRADE.LOSAL IS '최저 급여액';
 COMMENT ON COLUMN SALGRADE.HISAL IS '최고 급여액';
 
+----------------------------------------------------------
+
 -- DML Select
 -- 부서의 모든 정보를 가져온다 
 SELECT * FROM DEPT;
