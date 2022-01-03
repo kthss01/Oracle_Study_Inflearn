@@ -197,3 +197,101 @@ SELECT EMPNO, ENAME, COMM FROM EMP WHERE COMM IS NULL;
 
 -- 회사 대표(직속상관이 없는 사람)의 이름과 사원번호를 가져온다.
 SELECT ENAME, EMPNO FROM EMP WHERE MGR IS NULL;
+
+-- 정렬 -----------------------------------------------------------------------
+
+-- 사원의 사원번호, 이름, 급여를 가져온다.
+-- 급여를 기준으로 오름차순 정렬을 한다.
+SELECT EMPNO, ENAME, SAL FROM EMP ORDER BY SAL ASC;
+
+-- 사원의 사원번호, 이름, 급여를 가져온다.
+-- 사원번호를 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, SAL FROM EMP ORDER BY EMPNO DESC;
+
+-- 사원의 사원번호, 이름을 가져온다. 사원의 이름을 기준으로 오름차순 정렬을 한다.
+SELECT EMPNO, ENAME 
+FROM EMP
+ORDER BY ENAME ASC; 
+
+-- 사원의 사원번호, 이름, 입사일을 가져온다. 
+-- 입사일을 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, HIREDATE
+FROM EMP
+ORDER BY HIREDATE DESC;
+
+-- 직무가 SALESMAN인 사원의 사원이름, 사원번호, 급여를 가져온다.
+-- 급여를 기준으로 오름차순 정렬을 한다.
+SELECT ENAME, EMPNO, SAL
+FROM EMP
+WHERE JOB = 'SALESMAN'
+ORDER BY SAL;
+--ORDER BY SAL ASC;
+
+-- 1981년에 입사한 사원들의 사원번호, 사원이름, 입사일을 가져온다.
+-- 사원번호를 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, HIREDATE
+FROM EMP
+WHERE HIREDATE BETWEEN '1981/01/01' AND '1981/12/31'
+ORDER BY EMPNO DESC;
+
+-- 사원의 이름, 급여, 커미션을 가져온다.
+-- 커미션을 기준으로 오름차순 정렬을 한다.
+SELECT ENAME, SAL, COMM
+FROM EMP
+ORDER BY COMM; -- null이 의미가 없는값이고 무한대 값이라 어떠한 값보다 큰값이라 뒤로 감
+
+-- 사원의 이름, 급여, 커미션을 가져온다.
+-- 커미션을 기준으로 내림차순 정렬을 한다.
+SELECT ENAME, SAL, COMM
+FROM EMP
+ORDER BY COMM DESC; -- null이 제일 위로 올라옴
+
+-- 사원의 이름, 사원번호, 급여 가져온다.
+-- 급여 기준으로 내림차순, 이름을 기준으로 오름차순 정렬
+SELECT ENAME, EMPNO, SAL
+FROM EMP
+ORDER BY SAL DESC, ENAME ASC; -- 쉼표로 구분
+
+-- 숫자 함수 ------------------------------------------------------------
+
+-- dual 가상의 테이블
+SELECT 10 + 10 FROM DUAL;
+
+-- 절대값 구하기
+SELECT -10 FROM DUAL;
+SELECT -10, ABS(-10) FROM DUAL;
+
+-- 전직원의 급여를 2000 삭감하고 삭감한 급여액의 절대값을 구한다.
+SELECT SAL, SAL - 2000, ABS(SAL - 2000) FROM EMP;
+
+-- 소수점 이하 버림
+SELECT 12.3456, FLOOR(12.3456) FROM DUAL;
+
+-- 급여가 1500 이상인 사원의 급여를 15% 삭감한다. 단 소수점 이하는 버린다.
+SELECT SAL, SAL * 0.85, FLOOR(SAL * 0.85)
+FROM EMP
+WHERE SAL >= 1500;
+
+-- 반올림
+
+SELECT 12.3456, ROUND(12.3456) FROM DUAL; -- 12
+SELECT 12.8888, ROUND(12.8888) FROM DUAL; -- 13
+
+SELECT 888.8888, ROUND(888.8888), ROUND(888.8888, 2), ROUND(888.8888, -2) FROM DUAL;
+-- 0 소수점 1번쨰 자리
+
+-- 급여가 2천 이하인 사원들의 급여를 20%씩 인상한다. 단 10의 자리를 기준으로 반올림한다.
+SELECT SAL, ROUND(SAL * 1.2, -2)
+FROM EMP
+WHERE SAL <= 2000;
+
+-- 소수점 이하 버림 (자릿수 정함)
+SELECT 1112.3456, TRUNC(1112.3456), TRUNC(1112.3456, 2), TRUNC(1112.3456, -2) FROM DUAL;
+
+-- 전 직원의 급여를 10자리 이하를 삭감한다.
+SELECT SAL, TRUNC(SAL, -2)
+FROM EMP;
+
+-- 나머지 구하기
+SELECT MOD(10, 3), MOD(10, 4) FROM DUAL;
+
